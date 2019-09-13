@@ -1,4 +1,6 @@
 function setActiveStyleSheet(title) {
+  console.log(title);
+  console.log("In setActiceStyleSheet function");
   var i, a, main;
   for(i=0; (a = document.getElementsByTagName("link")[i]); i++) {
     if(a.getAttribute("rel").indexOf("style") != -1 && a.getAttribute("title")) {
@@ -50,7 +52,8 @@ function readCookie(name) {
 
 window.onload = function(e) {
   var cookie = readCookie("style");
-  var title = cookie ? cookie : getPreferredStyleSheet();
+  //var title = cookie ? cookie : getPreferredStyleSheet();
+  var title = "orange";
   setActiveStyleSheet(title);
 }
 
