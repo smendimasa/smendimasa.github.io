@@ -52,8 +52,8 @@ function readCookie(name) {
 
 window.onload = function(e) {
   var cookie = readCookie("style");
-  //var title = cookie ? cookie : getPreferredStyleSheet();
-  var title = "orange";
+  var title = cookie ? cookie : getPreferredStyleSheet();
+  //var title = "orange";
   setActiveStyleSheet(title);
 }
 
