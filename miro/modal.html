@@ -45,7 +45,7 @@
             </ul>
             </div>
             <div class="modal__footer">
-                <button class="btn">Continue</button>
+                <button class="btn" onclick="closeModal()" >Continue</button>
             </div>
         </div>
     </div>
@@ -75,6 +75,7 @@
    <script src="./assets/cui-2.0.0/js/highcharts.js"></script>
    <script src="./assets/cui-2.0.0/js/exporting.js"></script>
    <script src="./assets/cui-2.0.0/js/html2canvas.js"></script>
+   <script src="https://miro.com/app/static/sdk.1.1.js"></script>
    <div id="canvas"></div>
    <script>
       $(document).ready(function() {
@@ -102,6 +103,16 @@
             });
          });
       });
+
+      function closeModal() {
+            console.log("close")
+         // setCookie('cisco_banner', true, 360);
+         //hide class
+         // var element = document.getElementById("model-default");
+         //  element.className.add("hide");
+
+         miro.board.ui.closeModal();
+         }
    </script>
 </body>
 
