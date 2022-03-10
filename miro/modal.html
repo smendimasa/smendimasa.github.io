@@ -104,15 +104,20 @@
          });
       });
 
-      function closeModal() {
-            console.log("close")
-         // setCookie('cisco_banner', true, 360);
-         //hide class
-         // var element = document.getElementById("model-default");
-         //  element.className.add("hide");
+      function setCookie(name,value,days) {
+          var expires = "";
+          if (days) {
+              var date = new Date();
+              date.setTime(date.getTime() + (days*24*60*60*1000));
+              expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=None; Secure";
+      }
 
-         miro.board.ui.closeModal();
-         }
+      function closeModal() {
+        setCookie('cisco_banner', true, 360);
+        miro.board.ui.closeModal();
+      }
    </script>
 </body>
 
