@@ -26,25 +26,25 @@
 
         var hasCookie = getCookie('hasSeenCiscoBannerInMiro');
 
-        if(!getCookie('cisco_banner')) {
-          miro.board.ui.openModal("modal.html");
-        }
+        // if(!getCookie('cisco_banner')) {
+        //   miro.board.ui.openModal("modal.html");
+        // }
 
-        miro.addListener('WIDGETS_CREATED', widget => {
-          if(!getCookie('cisco_banner')) {
-            miro.board.ui.openModal("modal.html");
-          }
-        })
+        // miro.addListener('WIDGETS_CREATED', widget => {
+        //   if(!getCookie('cisco_banner')) {
+        //     miro.board.ui.openModal("modal.html");
+        //   }
+        // })
 
         // if cookie hasSeenCiscoBannerInMiro is NOT found, then
-        // if (hasCookie == '') {
-        //     //fire modal...
-        //     miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
-        //     // miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html');
+        if (hasCookie == '') {
+            //fire modal...
+            miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
+            // miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html');
 
-        //     //drop cookie
-        //     setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
-        // }
+            //drop cookie
+            setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
+        }
 
 
         
