@@ -35,6 +35,25 @@
          justify-content: center !important;
       }
    </style>
+
+      <script>
+
+         function setCookie(name,value,days) {
+            var expires = "";
+            if (days) {
+               var date = new Date();
+               date.setTime(date.getTime() + (days*24*60*60*1000));
+               expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=None; Secure";
+         }
+
+         function closeModal() {
+         setCookie('cisco_banner', true, 360);
+         miro.board.ui.closeModal();
+         }
+         
+      </script>
 </head>
 
 <body class="cui cui--animated cui--compressed" data-theme="">
@@ -61,7 +80,7 @@
             </ul>
             </div>
             <div class="modal__footer">
-                <button class="btn">Continue</button>
+                <button class="btn" onclick="closeModal()">Continue</button>
             </div>
         </div>
     </div>
@@ -84,6 +103,8 @@
       </main>
       <!-- End Main Content -->
    </div>
+
+
    <script src="./assets/cui-2.0.0/js/jquery-3.0.0.min.js"></script>
    <script src="./assets/cui-2.0.0/js/lodash.min.js"></script>
    <script src="./assets/cui-2.0.0/js/clipboard.js"></script>

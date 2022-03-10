@@ -6,45 +6,47 @@
 </head>
 <body>
 <script>
-    function getCookie(cname) {
-        let name = cname + "=";
-        let ca = document.cookie.split(';');
-        for(let i = 0; i < ca.length; i++) {
-            let c = ca[i];
-            while (c.charAt(0) == ' ') {
-                c = c.substring(1);
-            }
-            if (c.indexOf(name) == 0) {
-            return c.substring(name.length, c.length);
-            }
-        }
-        return "";
-    }
-
-    function setCookie(cname, cvalue, exdays) {
-         const d = new Date();
-         d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
-         let expires = "expires="+d.toUTCString();
-         document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/; SameSite=None; Secure";
-    }
+    function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for(var i=0;i < ca.length;i++) {
+              var c = ca[i];
+              while (c.charAt(0)==' ') c = c.substring(1,c.length);
+              if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+          }
+          return null;
+      }
 
     miro.onReady(() => {
 
         //set bottom banner
-        miro.board.ui.openBottomPanel("https://smendimasa.github.io/miro/bottom2.html",{ width: 500, height: 72 });
+        miro.board.ui.openBottomPanel("https://smendimasa.github.io/miro/bottom2.html",{ width: 600, height: 120 });
         // miro.board.ui.openBottomPanel("https://smendimasa.github.io/miro/bottom2.html");
 
         var hasCookie = getCookie('hasSeenCiscoBannerInMiro');
 
-        // if cookie hasSeenCiscoBannerInMiro is NOT found, then
-        if (hasCookie == '') {
-            //fire modal...
-            miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
-            // miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html');
-
-            //drop cookie
-            setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
+        if(!getCookie('cisco_banner')) {
+          miro.board.ui.openModal("modal.html");
         }
+
+        miro.addListener('WIDGETS_CREATED', widget => {
+          if(!getCookie('cisco_banner')) {
+            miro.board.ui.openModal("modal.html");
+          }
+        })
+
+        // if cookie hasSeenCiscoBannerInMiro is NOT found, then
+        // if (hasCookie == '') {
+        //     //fire modal...
+        //     miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
+        //     // miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html');
+
+        //     //drop cookie
+        //     setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
+        // }
+
+
+        
     });
 </script>
 </body>
