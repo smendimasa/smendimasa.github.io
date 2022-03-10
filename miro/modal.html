@@ -9,7 +9,7 @@
    <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/cui-standard.min.css">
    <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/frame.css">
    <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/style.css">
-   <script src="https://miro.com/app/static/sdk.1.1.js"></script>
+   
    <style>
       .chevron ul.tabs li.active a {
          background-color: #017cad !important;
@@ -37,7 +37,7 @@
       } */
    </style>
 
-      <script>
+      <!-- <script>
 
          function setCookie(name,value,days) {
             var expires = "";
@@ -50,11 +50,16 @@
          }
 
          function closeModal() {
+            console.log("close")
          setCookie('cisco_banner', true, 360);
-         miro.board.ui.closeModal();
+         //hide class
+         var element = document.getElementById("model-default");
+  element.classList.add("hide");
+
+         // miro.board.ui.closeModal();
          }
          
-      </script>
+      </script> -->
 </head>
 
 <body class="cui cui--animated cui--compressed" data-theme="">
@@ -105,7 +110,7 @@
       <!-- End Main Content -->
    </div>
 
-
+   <script src="https://miro.com/app/static/sdk.1.1.js"></script>
    <script src="./assets/cui-2.0.0/js/jquery-3.0.0.min.js"></script>
    <script src="./assets/cui-2.0.0/js/lodash.min.js"></script>
    <script src="./assets/cui-2.0.0/js/clipboard.js"></script>
@@ -140,6 +145,26 @@
             });
          });
       });
+
+      function setCookie(name,value,days) {
+            var expires = "";
+            if (days) {
+               var date = new Date();
+               date.setTime(date.getTime() + (days*24*60*60*1000));
+               expires = "; expires=" + date.toUTCString();
+            }
+            document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=None; Secure";
+         }
+
+         function closeModal() {
+            // console.log("close")
+         setCookie('cisco_banner', true, 360);
+         //hide class
+         // var element = document.getElementById("model-default");
+         //  element.className.add("hide");
+
+         miro.board.ui.closeModal();
+         }
    </script>
 </body>
 
