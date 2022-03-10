@@ -31,14 +31,15 @@
     miro.onReady(() => {
 
         //set bottom banner
-        miro.board.ui.openBottomPanel("https://smendimasa.github.io/miro/bottom.html",{ width: 320, height: 40 });
+        miro.board.ui.openBottomPanel("https://smendimasa.github.io/miro/bottom2.html",{ width: 320, height: 40 });
 
         var hasCookie = getCookie('hasSeenCiscoBannerInMiro');
 
         // if cookie hasSeenCiscoBannerInMiro is NOT found, then
         if (hasCookie == '') {
             //fire modal...
-            miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
+            // miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
+            miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html');
 
             //drop cookie
             setCookie('hasSeenCiscoBannerInMiro', 'true', 180);

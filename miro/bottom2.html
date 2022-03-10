@@ -1,13 +1,111 @@
-<div class="row">
-    <div class="col-xl-6">
-        <div class="alert alert--info">
-            <div class="alert__icon icon-info-outline"></div>
-            <div class="alert__message">
-                <h4>Title</h4>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas metus nulla, commodo a sodales sed, dignissim pretium nunc. Nam et lacus neque. Ut enim massa, sodales tempor convallis et, iaculis ac massa.</p>
-                <a href="javascript:;">Link</a>
+<!doctype html>
+<html lang="en">
+
+<head>
+   <meta charset="utf-8">
+   <title>oneui</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <meta http-equiv="X-UA-Compatible" content="ie=edge">
+   <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/cui-standard.min.css">
+   <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/frame.css">
+   <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/style.css">
+   <style>
+      .chevron ul.tabs li.active a {
+         background-color: #017cad !important;
+         opacity: 1 !important;
+         color: #ffffff;
+         box-shadow: none !important;
+      }
+
+      .chevron ul.tabs li a {
+         height: 56px min-width: 90% !important;
+         padding: 10px 6px;
+         background-color: #ffffff;
+         opacity: 1 !important;
+         color: #58585d;
+         text-align: center;
+         position: relative;
+         line-height: 16px;
+         font-size: 12px;
+         cursor: pointer;
+         flex: 1 !important;
+         flex-shrink: 1 !important;
+         flex-wrap: wrap !important;
+         display: flex !important;
+         justify-content: center !important;
+      }
+   </style>
+</head>
+
+
+<body class="cui cui--animated cui--compressed" data-theme="">
+
+    <!-- <div class="row">
+        <div class="col-xl-6">
+            <div class="alert alert--info">
+                <div class="alert__icon icon-info-outline"></div>
+                <div class="alert__message">
+                    <h4>Cisco Security Notice</h4>
+                    <p>Approved for Highly Confidential Data.</p>
+                    <a href="javascript:;">Link</a>
+                </div>
+                <a href="javascript:;" class="alert__close icon-close"></a>
             </div>
-            <a href="javascript:;" class="alert__close icon-close"></a>
         </div>
+    </div> -->
+
+    <div class="col-lg-4">
+        <div class="base-margin-bottom">
+            
+            <div class="alert">
+                <div class="alert__icon icon-info-outline"></div>
+                <div class="alert__message">
+                    <h4>Cisco Security Notice</h4>
+                    <p>Approved for Highly Confidential Data.</p>
+                </div>
+            </div>
+        
     </div>
-</div>
+
+
+   <script src="./assets/cui-2.0.0/js/jquery-3.0.0.min.js"></script>
+   <script src="./assets/cui-2.0.0/js/lodash.min.js"></script>
+   <script src="./assets/cui-2.0.0/js/clipboard.js"></script>
+   <script src="./assets/cui-2.0.0/js/styleguide.js"></script>
+   <script src="./assets/cui-2.0.0/js/highcharts.js"></script>
+   <script src="./assets/cui-2.0.0/js/exporting.js"></script>
+   <script src="./assets/cui-2.0.0/js/html2canvas.js"></script>
+   <div id="canvas"></div>
+   <script>
+      $(document).ready(function() {
+         $('body').find('[data-oneuihighcharts="container"]').each((key, val) => {
+            var finalJson = val.getAttribute('data-highchartfinaljson') || '[]';
+            var myChart = Highcharts.chart(val, JSON.parse(finalJson));
+         })
+      })
+      $('#canvas').on('click', function() {
+         html2canvas(document.body, {}).then(canvas => {
+            html2canvas(document.body, {}).then(canvas => {
+               document.body.appendChild(canvas);
+               getCanvas = canvas;
+               var imgageData = getCanvas.toDataURL('image/png');
+               var newData = imgageData.replace(
+                  /^data:image\/png/,
+                  'data:application/octet-stream'
+               );
+               // console.log(newData);
+               document.getElementById('canvas').setAttribute("data-title", newData);
+               /**
+                * remove canvas and link after download
+                */
+               document.querySelector('canvas').remove();
+            });
+         });
+      });
+   </script>
+
+</body>
+
+</html>
+
+
