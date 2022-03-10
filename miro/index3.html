@@ -33,17 +33,33 @@
         //set bottom banner
         miro.board.ui.openBottomPanel("https://smendimasa.github.io/miro/bottom.html",{ width: 320, height: 40 });
 
-        var hasCookie = getCookie('hasSeenCiscoBannerInMiro');
+        // var hasCookie = getCookie('hasSeenCiscoBannerInMiro');
 
-        // if cookie hasSeenCiscoBannerInMiro is NOT found, then
-        if (hasCookie == '') {
-            //fire modal...
-            miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
+        // // if cookie hasSeenCiscoBannerInMiro is NOT found, then
+        // if (hasCookie == '') {
+        //     //fire modal...
+        //     miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
 
-            //drop cookie
-            setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
-        }
+        //     //drop cookie
+        //     setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
+        // }
+
+        // if(!getCookie('cisco_banner')) {
+        //   miro.board.ui.openModal("modal.html");
+        // }
+
+        miro.addListener('WIDGETS_CREATED', widget => {
+        //   if(!getCookie('cisco_banner')) {
+            miro.board.ui.openModal("modal.html");
+        //   }
+        })
+
     });
+
+    
+
+
+    
 </script>
 </body>
 </html>
