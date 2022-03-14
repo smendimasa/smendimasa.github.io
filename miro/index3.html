@@ -33,10 +33,10 @@
         //     setCookie('hasSeenCiscoBannerInMiro', 'true', 180);
         // }
 
-        // if(!getCookie('cisco_banner')) {
-        //     miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
-        //     console.log("cookies not set")
-        // }
+        if(!getCookie('cisco_banner')) {
+            miro.board.ui.openModal('https://smendimasa.github.io/miro/modal.html', { width: 768, height: 543 });
+            console.log("cookies not set")
+        }
 
         miro.addListener('WIDGETS_CREATED', widget => {
           if(!getCookie('cisco_banner')) {
