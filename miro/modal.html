@@ -1,24 +1,21 @@
+<!--
+    Pop-up notification for Miro alerting user of the cost and pricing
+    Author: Sam Mendimasa
+    Date: 4/12/22
+-->
+
 <!doctype html>
 <html lang="en">
 
 <head>
    <meta charset="utf-8">
-   <title>oneui</title>
+   <title>Miro Modal</title>
    <meta name="viewport" content="width=device-width, initial-scale=1.0">
    <meta http-equiv="X-UA-Compatible" content="ie=edge">
    <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/cui-standard.min.css">
    <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/frame.css">
    <link rel="stylesheet" type="text/css" href="./assets/cui-2.0.0/css/style.css">
-   <!-- <style>
-      .chevron ul.tabs li.active a {
-         background-color: #017cad !important;
-         opacity: 1 !important;
-         color: #ffffff;
-         box-shadow: none !important;
-      }
-
-     
-   </style> -->
+  
 </head>
 
 <body class="cui cui--animated cui--compressed" data-theme="">
@@ -37,8 +34,8 @@
                         <p class="text-large">Attention! You are accessing a Miro board for the first time. </p>
                      <p class="text-large"><em>If you have already requested a license through eStore, please disregard this message.</em> </p>
                      <ul class="text-large">
-                        <li class="base-margin-bottom">Upon creating or editing a board or creating content you will be automatically upgraded to a full license.</li>
-                        <li class="base-margin-bottom">A fee of $54 will be cross-charged to your department quarterly if you have been active on the board three or more times during the quarter (creating/editing a board or creating content).
+                        <li class="base-margin-bottom">Upon creating/editing a board or creating content, you will be automatically upgraded to a full license.</li>
+                        <li class="base-margin-bottom">A fee of $54 will be cross-charged to your department quarterly if you have edited on four or more different days on any boards during the quarter (creating/editing a board or creating content).
                         </li>
                         <li class="base-margin-bottom">Viewing or commenting on boards using the comment functionality is free and no charges apply.</li>
                         <li>If you have questions about licensing, please visit our <a target="_blank" href="https://cisco.sharepoint.com/sites/MiroatCisco/SitePages/GettingStarted.aspx">Getting Started information</a> at&nbsp; <a target="_blank" href="https://cisco.sharepoint.com/sites/MiroatCisco">Miro at Cisco</a>.&nbsp;&nbsp;</li>
@@ -81,16 +78,16 @@
                   /^data:image\/png/,
                   'data:application/octet-stream'
                );
-               // console.log(newData);
+               
                document.getElementById('canvas').setAttribute("data-title", newData);
-               /**
-                * remove canvas and link after download
-                */
                document.querySelector('canvas').remove();
             });
          });
       });
 
+      /**
+       * func to save a cookie in user browser for one year
+       **/
       function setCookie(name,value,days) {
           var expires = "";
           if (days) {
@@ -101,8 +98,10 @@
           document.cookie = name + "=" + (value || "")  + expires + "; path=/; SameSite=None; Secure";
       }
 
+      /**
+       * func to close modal after user clicks continue
+       **/
       function closeModal() {
-         //cookies to expire in 1 year
         setCookie('cisco_banner', true, 360);
         miro.board.ui.closeModal();
       }
